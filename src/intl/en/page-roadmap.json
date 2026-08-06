@@ -121,5 +121,7 @@
   "page-roadmap-upgrade-status-not-confirmed": "Date not yet confirmed",
   "page-roadmap-upgrade-status-next": "Next milestone",
   "page-roadmap-upgrade-status-verified": "Status checked",
-  "page-roadmap-upgrade-status-track": "Track live progress on Forkcast"
+  "page-roadmap-upgrade-status-track": "Track live progress on Forkcast",
+  "page-roadmap-eip-status-scheduled": "Scheduled for inclusion",
+  "page-roadmap-eip-status-considered": "Considered for inclusion"
 }
