@@ -18,6 +18,7 @@ export type UpgradeSummaryProps = {
  * renders no tag rather than a raw key — add the key when an upgrade needs it.
  */
 const PHASE_LABEL_KEYS: Partial<Record<UpgradePhase, string>> = {
+  planning: "page-roadmap-upgrade-status-phase-planning",
   devnet: "page-roadmap-upgrade-status-phase-devnet",
 }
 
