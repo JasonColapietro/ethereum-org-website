@@ -1,3 +1,5 @@
+import type { PartialDate } from "@/data/upgrades/types"
+
 import { DEFAULT_LOCALE } from "../constants"
 import type { Lang } from "../types"
 
@@ -69,6 +71,28 @@ export const formatDate = (
     year: "numeric",
     ...options,
   }).format(new Date(date))
+}
+
+/**
+ * Format a {@link PartialDate} at whatever precision it carries: a year, a
+ * month and year, or a full date. Used by the upgrade status data layer, where
+ * a date is only ever as precise as its source.
+ *
+ * Built through `dateTimeFormat` so Arabic and Urdu get the right numbering
+ * system, and pinned to UTC so a `{ year, month, day }` never renders as the
+ * previous day for viewers behind UTC.
+ */
+export const formatPartialDate = (
+  { year, month, day }: PartialDate,
+  locale: string = DEFAULT_LOCALE
+) => {
+  const date = new Date(Date.UTC(year, (month ?? 1) - 1, day ?? 1))
+  return dateTimeFormat(locale, {
+    timeZone: "UTC",
+    year: "numeric",
+    ...(month && { month: "long" }),
+    ...(day && { day: "numeric" }),
+  }).format(date)
 }
 
 export const isDateReached = (date: string) => {
