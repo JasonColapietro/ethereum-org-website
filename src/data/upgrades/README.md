@@ -5,6 +5,11 @@ status. One file per upgrade, typed by `types.ts`. **Prose stays in
 `public/content/`** — these files exist so refreshing a date does not require
 editing an explainer. If a value here is wrong, fix it here.
 
+**Rationale belongs in this README, not in comments inside the data files.**
+These files are meant to be machine-writable, and anything that regenerates one
+from a template will silently drop inline comments. Record *why* a value is what
+it is here, where it survives.
+
 ## Sources of truth
 
 [Forkcast](https://forkcast.org) and the upgrade's meta EIP, nothing else. Facts
@@ -19,9 +24,10 @@ public testnet forks running · `scheduled` mainnet epoch confirmed via ACD ·
 
 ## Milestone `status`
 
-Strongest to weakest claim: `live` running now · `confirmed` date set via ACD ·
-`anticipated` expected, no date · `projected` inferred from the mainnet target ·
-`complete` finished. The UI must never render a weaker status as a settled one.
+`complete` is the one settled value — the milestone happened. The other four are
+claims about the future, strongest to weakest: `live` running now · `confirmed`
+date set via ACD · `anticipated` expected, no date · `projected` inferred from
+the mainnet target. The UI must never render a weaker one as a settled one.
 
 An undated future fork gets **no milestone entry at all**. `UpgradePhase` already
 encodes the sequence (`devnet` → `testnet` → `scheduled`), so the phase carries
