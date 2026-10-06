@@ -5,8 +5,8 @@ import { expect, test } from "@playwright/test"
 
 import { discoverStaticPages } from "@/lib/utils/staticPages"
 
-test("discoverStaticPages excludes non-public Next.js route segments", (_, testInfo) => {
-  const root = testInfo.outputPath("routes")
+test("discoverStaticPages excludes non-public Next.js route segments", () => {
+  const root = test.info().outputPath("routes")
   const publicPage = join(root, "public")
   const excluded = ["[slug]", "_private", "@modal", "(.)intercept"]
 

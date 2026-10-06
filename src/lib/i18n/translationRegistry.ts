@@ -152,6 +152,7 @@ async function getDynamicIntlPagePaths(): Promise<string[]> {
   const appPaths = appsData
     ? Object.values(appsData)
         .flat()
+        // Scout Game is a dead app URL and must stay out of sitemap discovery.
         .filter((app) => slugify(app.name) !== "scout-game")
         .map((app) => `/apps/${slugify(app.name)}/`)
     : []
